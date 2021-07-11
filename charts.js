@@ -33,12 +33,12 @@ function optionChanged(newSample) {
 // Demographics Panel 
 function buildMetadata(sample) {
   d3.json("samples.json").then((data) => {
-    let metadata = data.metadata;
+    var metadata = data.metadata;
     // Filter the data for the object with the desired sample number
-    let resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
-    let result = resultArray[0];
+    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    var result = resultArray[0];
     // Use d3 to select the panel with id of `#sample-metadata`
-    let PANEL = d3.select("#sample-metadata");
+    var PANEL = d3.select("#sample-metadata");
 
     // Use `.html("") to clear any existing metadata
     PANEL.html("");
@@ -58,23 +58,23 @@ function buildCharts(sample) {
   // 2. Use d3.json to load and retrieve the samples.json file 
   d3.json("samples.json").then((data) => {
     // 3. Create a variable that holds the samples array. 
-    let samples = data.samples;
+    var samples = data.samples;
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    let resultArray = samples.filter(sampleObj => sampleObj.id == sample);
+    var resultArray2 = samples.filter(sampleObj => sampleObj.id == sample);
     //  5. Create a variable that holds the first sample in the array.
-    let result = resultArray[0]
+    var result2 = resultArray2[0]
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    let ids = result.otu_ids;
-    let labels = result.otu_labels;
-    let values = result.sample_values;
+    var ids = result2.otu_ids;
+    var labels = result2.otu_labels;
+    var values = result2.sample_values;
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order so the otu_ids with the most bacteria are last. 
 
-    let yticks = ids.slice(0,10).reverse().map(id => 'OTU ' + id);
-    let xticks = values.slice(0,10).reverse();
-    let hover = labels.slice(0,10).reverse();
+    var yticks = ids.slice(0,10).reverse().map(id => 'OTU ' + id);
+    var xticks = values.slice(0,10).reverse();
+    var hover = labels.slice(0,10).reverse();
 
     console.log(yticks);
     console.log(xticks);
@@ -96,5 +96,28 @@ function buildCharts(sample) {
     };
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot('bar', barData, barLayout);
+
+    // 1. Create the trace for the bubble chart.
+    var bubbleData = [{
+      x: ids,
+      y: values,
+      text: labels,
+      mode: 'markers',
+      marker: {
+        size: values,
+        color: ids
+      }
+    }];
+
+    // 2. Create the layout for the bubble chart.
+    var bubbleLayout = {
+      title: 'Bacteria Cultures Per Sample',
+      xaxis: {title: 'OTU ID'},
+      height: 600,
+      width: 1200
+    };
+
+    // 3. Use Plotly to plot the data with the layout.
+    Plotly.newPlot('bubble', bubbleData, bubbleLayout); 
   });
 }
