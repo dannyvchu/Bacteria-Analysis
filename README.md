@@ -1,37 +1,24 @@
-## Welcome to GitHub Pages
+# Belly Button Bacteria Biodiversity
 
-You can use the [editor on GitHub](https://github.com/dannyvchu/bacteria/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+## Project Purpose
+The purpose of this project is to create a webpage using JavaScript and HTML to display a variety of different plots and charts using the belly button bacteria data. A drop down menu will allow the user to select their own individual ID number and the page will automatically generate new charts for the specified ID. The plots will be created with the help of D3 and Plotly.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Resources
+- Software: 
+	- JavaScript ES6+
+	- D3 (Data-Driven Documents)
+	- HTML/CSS
+	- Bootstrap
+	- Plotly
+	
+## The HTML page:
 
-### Markdown
+![dropdown](images/dropdown.png)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The page initially loads with the first test subject's information into the "Demographic Info" table and will also generate the following charts. The user can then use the drop down menu to switch between the different test subject ID numbers.
 
-```markdown
-Syntax highlighted code block
+![bar](images/bar.png) ![gauge](images/gauge.png)
+![bubble](images/bubble.png)
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/dannyvchu/bacteria/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## GitHub Pages
+To see the webpage in its entirety, visit: dannyvchu.github.io/bacteria
